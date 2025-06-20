@@ -1,0 +1,9 @@
+{
+  "name": "healthbuddy",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Healthbuddy patient health companion",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

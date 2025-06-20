@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f7f4" />
+    <meta name="description" content="A personal space for your health records, care notes, and follow-ups." />
+    <title>Healthbuddy — Your health, in one place</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#home" aria-label="Healthbuddy home">
+          <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 27s-10-6.1-10-13.2A5.8 5.8 0 0 1 16 10a5.8 5.8 0 0 1 10 3.8C26 20.9 16 27 16 27Z"/><path d="M8.5 16h4l2-4 3 8 2-4h4"/></svg></span>
+          <span>healthbuddy</span>
+        </a>
+        <div class="profile-switcher"><div class="avatar avatar-lilac" id="side-initials">AR</div><div class="profile-copy"><strong id="profile-name-label">Ananya Rao</strong><span>Personal health space</span></div><span class="chevron">⌄</span></div>
+        <div class="side-label">WORKSPACE</div>
+        <nav class="nav-list" aria-label="Main navigation">
+          <button class="nav-item active" data-page="home"><span class="nav-icon">⌂</span><span>Overview</span></button>
+          <button class="nav-item" data-page="records"><span class="nav-icon">▤</span><span>Health records</span><span class="nav-count" id="record-nav-count">6</span></button>
+          <button class="nav-item" data-page="care"><span class="nav-icon">☑</span><span>Care & follow-ups</span></button>
+          <button class="nav-item" data-page="assistant"><span class="nav-icon">✳</span><span>Ask Healthbuddy</span></button>
+          <button class="nav-item" data-page="sharing"><span class="nav-icon">♧</span><span>Sharing</span></button>
+        </nav>
+        <div class="sidebar-bottom">
+          <div class="privacy-card"><span class="privacy-icon">◈</span><div><strong>Your health, your say</strong><p>Review what you share and with whom.</p></div><button class="text-link" data-go="sharing">Manage access <span>→</span></button></div>
+          <button class="nav-item settings-item" data-page="settings"><span class="nav-icon">⚙</span><span>Settings</span></button>
+          <div class="sidebar-footer"><span class="online-dot"></span> Your space is stored on this device</div>
+        </div>
+      </aside>
+      <main class="main-area">
+        <header class="topbar"><button class="mobile-menu" id="mobile-menu" aria-label="Open menu">☰</button><div class="breadcrumb"><span>My health</span><span class="crumb-slash">/</span><strong id="current-section">Overview</strong></div><div class="top-actions"><button class="icon-button" id="notifications" aria-label="Notifications">♧<i></i></button><div class="top-avatar" id="top-initials">AR</div></div></header>
+        <section class="page-wrap">
+          <div class="local-notice"><span class="notice-dot"></span><span><strong>Sample health profile</strong> · Your changes stay in this browser on this device.</span><button id="dismiss-notice" aria-label="Dismiss notice">×</button></div>
+          <div id="page-content"></div>
+          <footer class="page-footer"><span>Healthbuddy · Your personal health space</span><span>Project date · 20 June 2025</span></footer>
+        </section>
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <dialog id="record-dialog" class="dialog"><form id="record-form" method="dialog"><div class="dialog-head"><div><p class="eyebrow">HEALTH RECORD</p><h2>Add a record</h2></div><button type="button" class="close-button" data-close="record-dialog" aria-label="Close">×</button></div><p class="dialog-intro">Add a document or note to your personal timeline. You can review and edit it any time.</p><div class="form-grid"><label class="field full">Record name<input name="title" required maxlength="90" placeholder="e.g. Blood test results" /></label><label class="field">Record type<select name="type"><option>Lab report</option><option>Prescription</option><option>Consultation note</option><option>Diagnosis</option><option>Allergy</option><option>Other</option></select></label><label class="field">Date<input name="date" type="date" required /></label><label class="field full">Clinic or provider<input name="provider" maxlength="90" placeholder="e.g. Lakeside Clinic" /></label><label class="field full">What would you like to remember?<textarea name="summary" rows="3" maxlength="700" placeholder="Add a note from your visit or record…"></textarea></label><label class="field full upload-field"><span>Attach a file <small>PDF, image, or document · up to 8 MB</small></span><input name="file" type="file" accept=".pdf,.png,.jpg,.jpeg,.webp,.txt,.doc,.docx" /><span class="file-hint" id="file-hint">Choose a file from this device</span></label></div><div class="dialog-actions"><button type="button" class="button button-quiet" data-close="record-dialog">Cancel</button><button type="submit" class="button button-primary">Add to my records <span>→</span></button></div></form></dialog>
+    <dialog id="share-dialog" class="dialog"><form id="share-form" method="dialog"><div class="dialog-head"><div><p class="eyebrow">CONTROLLED ACCESS</p><h2>Share selected records</h2></div><button type="button" class="close-button" data-close="share-dialog" aria-label="Close">×</button></div><p class="dialog-intro">Choose what to share and set an expiry. This browser version records your selection locally.</p><div class="form-grid"><label class="field full">Recipient name<input name="recipient" required maxlength="80" placeholder="e.g. Dr. Meera Shah" /></label><label class="field full">Purpose<input name="purpose" required maxlength="120" placeholder="e.g. Upcoming consultation" /></label><label class="field">Share records<select name="scope"><option>All health records</option><option>Lab reports</option><option>Medications and prescriptions</option><option>Consultation notes</option></select></label><label class="field">Access expires<select name="expiry"><option>In 7 days</option><option>In 24 hours</option><option>In 30 days</option></select></label></div><div class="dialog-actions"><button type="button" class="button button-quiet" data-close="share-dialog">Cancel</button><button type="submit" class="button button-primary">Save sharing choice <span>→</span></button></div></form></dialog>
+    <script src="/app.js" defer></script>
+  </body>
+</html>
