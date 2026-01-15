@@ -1,26 +1,29 @@
 # Healthbuddy
 
-**Project date: 20 June 2025**
+Healthbuddy helps people keep health records, visit notes, and follow-ups together in one place, with a patient-controlled way to connect information from clinic visits.
 
-Healthbuddy is a personal health companion for keeping health records, visit notes, and follow-ups together in one place. It helps people stay organized and understand information recorded by their care team.
+## What’s here
 
-## Features
+- Patient health overview and searchable record timeline.
+- Clinic workspace for patient invitations and consultation documents.
+- Patient invitation claim, review, and clinic-access controls.
+- Follow-up tracking and record-based information lookup.
 
-- Health overview and timeline.
-- Searchable personal health records.
-- Add notes and attach documents.
-- Keep track of follow-up tasks.
-- Ask questions about information in your records and see the supporting source.
-- Choose sharing details and manage saved sharing choices.
+## Run locally
 
-## Run
+Requires Python 3.11 or newer. In PowerShell, create an environment, install dependencies, and start the app:
 
-Requires Node.js 18 or newer. From this folder, run:
-
-```bash
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+$env:HEALTHBUDDY_SETUP_KEY = "choose-a-random-value-at-least-24-characters-long"
+npm run migrate
 npm start
 ```
 
-Then open [http://localhost:4173](http://localhost:4173).
+Open [http://localhost:8000](http://localhost:8000). The local setup uses SQLite and stores uploaded files under `data/` on this device.
 
-This release stores information in the browser on the current device. It does not connect to a clinic or send records to another person. The sample profile is for exploring the app; do not enter real patient information.
+The clinic’s first account is created from the Clinic workspace using the setup key. Invitations are copied and shared by clinic staff; Healthbuddy does not send email. Use synthetic records while setting up the service. Do not enter real patient information.
+
+For a PostgreSQL run with Docker Compose, copy `.env.example` to `.env`, replace both secret values, then run `docker compose up --build`.

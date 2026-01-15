@@ -1,9 +1,10 @@
 {
   "name": "healthbuddy",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Healthbuddy patient health companion",
   "scripts": {
-    "start": "node server.js"
+    "start": "python -m uvicorn backend.main:app --reload --host 127.0.0.1 --port 8000",
+    "migrate": "python -m alembic upgrade head"
   }
 }
